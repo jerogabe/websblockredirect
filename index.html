@@ -28,12 +28,25 @@
             color: #e63946;
         }
     </style>
+    <script>
+        // Función para obtener el valor del parámetro 'blockedSite' de la URL
+        function getBlockedSite() {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get('blockedSite') || "el sitio web";
+        }
+
+        // Asigna el valor de 'blockedSite' al contenido de la página
+        document.addEventListener("DOMContentLoaded", function() {
+            const siteName = getBlockedSite();
+            document.getElementById("blockedSiteName").textContent = siteName;
+        });
+    </script>
 </head>
 <body>
     <div class="container">
         <h1>Acceso Restringido</h1>
         <p>Estás viendo esta página porque tu dispositivo está protegido con el cortafuegos JeroDyC.</p>
-        <p>El sitio web ha sido bloqueado debido a políticas de seguridad que restringen el acceso a contenido no autorizado.</p>
+        <p>El sitio web <span id="blockedSiteName"></span> ha sido bloqueado debido a políticas de seguridad que restringen el acceso a contenido no autorizado.</p>
     </div>
 </body>
 </html>
